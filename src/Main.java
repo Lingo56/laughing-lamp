@@ -12,16 +12,9 @@ public class Main {
     
 
     public static void main(String[] args) {
-    	
-    	javax.swing.SwingUtilities.invokeLater(new Runnable()
-    	{
-            public void run()
-            {
-                frame();
-            }
-    	});
 
-    		
+        // Console Output
+
         System.out.println("What am I doing?! Steven Saito");
 
         System.out.println("Seasons pass snow and snow"); //Steven Saito
@@ -30,8 +23,15 @@ public class Main {
 
         System.out.println("More to add to the project. Peter");
 
+        // GUI
 
-
+        javax.swing.SwingUtilities.invokeLater(new Runnable()
+    	{
+            public void run()
+            {
+                frame();
+            }
+    	});
     }
     
 
