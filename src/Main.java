@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.io.*; // For Input Stream
 
 
 public class Main {
@@ -22,6 +23,24 @@ public class Main {
         System.out.println("Im Fancy! Avneet Sekhon");
 
         System.out.println("More to add to the project. Peter");
+
+        // Runs ipconfig
+
+        Runtime runtime = Runtime.getRuntime();
+
+        try {
+            Process process = runtime.exec("ipconfig"); // you might need the full path
+            InputStream is = process.getInputStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        }catch(IOException e){
+            System.out.println("IO Error");
+        }
 
         // GUI
 
