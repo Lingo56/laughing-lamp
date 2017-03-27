@@ -91,7 +91,10 @@ public class Main extends JFrame {
 		NoiseMediumRadio = new JRadioButton("Medium");
 		NoiseHighRadio = new JRadioButton("High");
 		
-		//ExitButton.addActionListener(new ExitButtonListener());
+		NoiseNoneRadio.addActionListener(new NoiseNoneRadioListener());
+		NoiseLowRadio.addActionListener(new NoiseLowRadioListener());
+		NoiseMediumRadio.addActionListener(new NoiseMediumRadioListener());
+		NoiseHighRadio.addActionListener(new NoiseHighRadioListener());
 		
 		//create ButtonPanel
 		NoisePanel = new JPanel();
@@ -119,7 +122,9 @@ public class Main extends JFrame {
 		OneSixRadio = new JRadioButton("1.6x");
 		TwoTimesRadio = new JRadioButton("2x");
 		
-		//ExitButton.addActionListener(new ExitButtonListener());
+		OneRadio.addActionListener(new OneRadioListener());
+		OneSixRadio.addActionListener(new OneSixRadioListener());
+		TwoTimesRadio.addActionListener(new TwoTimesRadioListener());
 		
 		//create ButtonPanel
 		ScalePanel = new JPanel();
@@ -172,6 +177,62 @@ public class Main extends JFrame {
 			System.out.println("\nYou've pressed the 'Upscale' Button");
 		}
 	}
+	
+	
+	//NOISE RADIO---------
+	private class NoiseNoneRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the 'None' Button");
+		}
+	}
+	private class NoiseLowRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the 'Low' Button");
+		}
+	}
+	private class NoiseMediumRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the 'Medium' Button");
+		}
+	}
+	private class NoiseHighRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the 'High' Button");
+		}
+	}
+	
+	
+	//MULTIPLIER RADIO---------
+	private class OneRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the 'None' Button");
+		}
+	}
+	private class OneSixRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the '1.6x' Button");
+		}
+	}
+	private class TwoTimesRadioListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("\nYou've selected the '2x' Button");
+		}
+	}
+	
 	
 	//-------------------BUTTONS-------------------------
 	
