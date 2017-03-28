@@ -10,8 +10,8 @@ import java.io.*; // For Input Stream
 public class Main extends JFrame {
 
     //Frame width and height
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 800;
+	private static final int WIDTH = 600;
+	private static final int HEIGHT = 600;
 	
 	//Objects
 	private JPanel TitlePanel, UploadPanel, ButtonPanel, InstructionPanel, NoisePanel, ScalePanel;
@@ -19,10 +19,11 @@ public class Main extends JFrame {
 	private JButton ExitButton, UpscaleButton;
 	private JRadioButton NoiseNoneRadio, NoiseLowRadio, NoiseMediumRadio, NoiseHighRadio;
 	private JRadioButton OneRadio, OneSixRadio, TwoTimesRadio;
-	private JTextArea theText; //TEMPORARY MIDDLE!!!!!!!!!!!!
-	
+	private JTextField theText; //TEMPORARY MIDDLE!!!!!!!!!!!! ACTUALLY MAYBE NOT FOR URL UPLOAD
+	private JButton UploadButton;
 	
     //GUI interface Constructor-----------------------------
+	//Build the Gui
     public Main()
     {
     	super("Main");
@@ -37,7 +38,8 @@ public class Main extends JFrame {
     	BuildScalePanel();
     	BuildButtons();
     	
-    	setLayout(new GridLayout(6, 1)); //set gridlayout
+    	
+    	setLayout(new GridLayout(6, 0, 0, 0)); //set gridlayout
     	add(TitlePanel);
     	add(InstructionPanel);
     	add(UploadPanel);
@@ -51,11 +53,13 @@ public class Main extends JFrame {
 	{
 		TitleLabel = new JLabel("Waifu 2x Upscaling Program");
 		
+		TitleLabel.setFont (new Font("Serif",Font.BOLD, 24));
+		
 		//create TitlePanel
 		TitlePanel = new JPanel();
 		
 		//add labels to the panel
-		TitlePanel.add(TitleLabel);
+		TitlePanel.add(TitleLabel);		
 	}
 	
 	public void BuildInstructionPanel()
@@ -73,13 +77,16 @@ public class Main extends JFrame {
 	{	
 		UploadPanel = new JPanel();
 		UploadPanel.setBackground(Color.blue);
-		theText = new JTextArea(13, 45);
+		theText = new JTextField(50);
 		theText.setBackground(Color.white);
+		UploadButton = new JButton("Upload");
+		
+		UploadButton.addActionListener(new UploadButtonListener());
 		
 		//create UploadPanel
 		UploadPanel = new JPanel();
-		
 		UploadPanel.add(theText);
+		UploadPanel.add(UploadButton);
 	}
 	
 	
@@ -178,6 +185,17 @@ public class Main extends JFrame {
 		}
 	}
 	
+	//UPLOAD BUTTON---------
+	private class UploadButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{	
+			System.out.println("\nYou've pressed the 'Upload' Button");
+			String textFieldValue = theText.getText(); //get text from textField
+			System.out.print(textFieldValue); //Test that text field get inputs
+		}
+	}
+	
 	
 	//NOISE RADIO---------
 	private class NoiseNoneRadioListener implements ActionListener
@@ -234,7 +252,7 @@ public class Main extends JFrame {
 	}
 	
 	
-	//-------------------BUTTONS-------------------------
+	//-------------------BUTTONS-END-------------------------
 	
 
     public static void main(String[] args) {
