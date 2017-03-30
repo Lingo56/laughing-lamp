@@ -272,7 +272,7 @@ public class Main extends JFrame {
         Runtime runtime = Runtime.getRuntime();
 
         try {
-            Process process = runtime.exec("ipconfig"); // you might need the full path
+            Process process = runtime.exec("cmd /c start waifu2x-converter-cpp.exe"); // you might need the full path
             InputStream is = process.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
