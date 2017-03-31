@@ -1,8 +1,10 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -31,7 +33,10 @@ public class UI extends JFrame {
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
-		private String path = "";
+		private String path = "Enter image URL.";
+		
+		private Color bgColor = Color.white; 
+				
 		
 		//GUI interface Constructor-----------------------------
 		//Build the Gui
@@ -42,13 +47,13 @@ public class UI extends JFrame {
 	    	setSize(WIDTH, HEIGHT); //set size of window
 	    	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 	    	
+	    	
 	    	BuildTitlePanel();
 	    	BuildInstructionPanel();
 	    	BuildBrowsePanel();
 	    	BuildNoisePanel();
 	    	BuildScalePanel();
 	    	BuildButtons();
-	    	
 	    	
 	    	setLayout(new GridLayout(6, 0)); //set gridlayout
 	    	add(TitlePanel);
@@ -57,7 +62,11 @@ public class UI extends JFrame {
 	    	add(NoisePanel);
 	    	add(ScalePanel);
 	    	add(ButtonPanel);
+	    	
+	    	setBackground(bgColor);
 	    }
+	    
+	    
 	    
 	    public void BuildTitlePanel() // (updated by avneet)
 		{
@@ -67,6 +76,7 @@ public class UI extends JFrame {
 			
 			//create TitlePanel
 			TitlePanel = new JPanel();
+			TitlePanel.setBackground(bgColor);
 			
 			//add labels to the panel
 			TitlePanel.add(TitleLabel);		
@@ -78,6 +88,7 @@ public class UI extends JFrame {
 			
 			//create TitlePanel
 			InstructionPanel = new JPanel();
+			InstructionPanel.setBackground(bgColor);
 			
 			//add labels to the panel
 			InstructionPanel.add(InstructionLabel);
@@ -86,9 +97,9 @@ public class UI extends JFrame {
 		public void BuildBrowsePanel()// (updated by avneet)
 		{	
 			BrowsePanel = new JPanel();
-			BrowsePanel.setBackground(Color.red);
+			BrowsePanel.setBackground(bgColor);
 			theText = new JTextField(30);
-			theText.setBackground(Color.white);
+			theText.setBackground(bgColor);
 			BrowseButton = new JButton("Browse");
 			theText.setText("" + path);
 			
@@ -96,8 +107,10 @@ public class UI extends JFrame {
 			
 			//create BrowsePanel (updated by avneet)
 			BrowsePanel = new JPanel();
+			BrowsePanel.setBackground(bgColor);
 			BrowsePanel.add(theText);
 			BrowsePanel.add(BrowseButton);
+			
 		}
 		
 		
@@ -109,13 +122,17 @@ public class UI extends JFrame {
 			NoiseMediumRadio = new JRadioButton("Medium");
 			NoiseHighRadio = new JRadioButton("High");
 			
+			NoiseHighRadio.setBackground(bgColor);
+			
 			NoiseLowRadio.addActionListener(new NoiseLowRadioListener());
 			NoiseMediumRadio.addActionListener(new NoiseMediumRadioListener());
 			NoiseHighRadio.addActionListener(new NoiseHighRadioListener());
 			NoiseNoneRadio.addActionListener(new NoiseNoneRadioListener());
 			
+			
 			//create ButtonPanel
 			NoisePanel = new JPanel();
+			NoisePanel.setBackground(bgColor);
 			
 			//Button group so only one can be selected
 			ButtonGroup noisegroup = new ButtonGroup();
@@ -140,12 +157,14 @@ public class UI extends JFrame {
 			OneSixRadio = new JRadioButton("1.6x");
 			TwoTimesRadio = new JRadioButton("2x");
 			
+			
 			OneRadio.addActionListener(new OneRadioListener());
 			OneSixRadio.addActionListener(new OneSixRadioListener());
 			TwoTimesRadio.addActionListener(new TwoTimesRadioListener());
 			
 			//create ButtonPanel
 			ScalePanel = new JPanel();
+			ScalePanel.setBackground(bgColor);
 			
 			//Button group so only one can be selected (updated by avneet)
 			ButtonGroup scalegroup = new ButtonGroup();
@@ -169,6 +188,7 @@ public class UI extends JFrame {
 			
 			//create ButtonPanel
 			ButtonPanel = new JPanel();
+			ButtonPanel.setBackground(bgColor);
 					
 			ButtonPanel.add(ExitButton);
 			ButtonPanel.add(UpscaleButton);
@@ -275,5 +295,7 @@ public class UI extends JFrame {
 			path = myBrowser.getSelectedFile().getAbsolutePath();
 			theText.setText("" + path);			
 		}	
+		
+		
 		
 }

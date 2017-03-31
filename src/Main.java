@@ -41,8 +41,9 @@ public class Main extends JFrame {
         }
 
         // GUI------------------------------------------------------
-        Main GUIinterface = new Main();
+        UI GUIinterface = new UI();
         GUIinterface.setVisible(true);
+        
 
     }
     
