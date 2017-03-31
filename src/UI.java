@@ -33,7 +33,7 @@ public class UI extends JFrame {
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
-		private String path = "Enter image URL.";
+		private String path = "Browse for your image...";
 		
 		private Color bgColor = Color.white; 
 				
@@ -154,8 +154,8 @@ public class UI extends JFrame {
 		{
 			JLabel RadioLabel = new JLabel("Select upscale multiplier: ");
 			OneRadio = new JRadioButton("None");
-			OneSixRadio = new JRadioButton("1.6x");
-			TwoTimesRadio = new JRadioButton("2x");
+			OneSixRadio = new JRadioButton("2x");
+			TwoTimesRadio = new JRadioButton("4x");
 			
 			
 			OneRadio.addActionListener(new OneRadioListener());
@@ -273,14 +273,14 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '1.6x' Button");
+				System.out.println("\nYou've selected the '2x' Button");
 			}
 		}
 		private class TwoTimesRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '2x' Button");
+				System.out.println("\nYou've selected the '4x' Button");
 			}
 		}
 		
