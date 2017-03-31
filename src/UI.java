@@ -101,7 +101,7 @@ public class UI extends JFrame {
 		}
 		
 		
-		public void BuildNoisePanel()
+		public void BuildNoisePanel() // (updated by avneet)
 		{
 			JLabel RadioLabel = new JLabel("Select noise reduction: ");
 			NoiseNoneRadio = new JRadioButton("None");
@@ -133,7 +133,7 @@ public class UI extends JFrame {
 		
 		
 		
-		public void BuildScalePanel()
+		public void BuildScalePanel() // (updated by avneet)
 		{
 			JLabel RadioLabel = new JLabel("Select upscale multiplier: ");
 			OneRadio = new JRadioButton("None");
@@ -147,13 +147,13 @@ public class UI extends JFrame {
 			//create ButtonPanel
 			ScalePanel = new JPanel();
 			
-			//Button group so only one can be selected
+			//Button group so only one can be selected (updated by avneet)
 			ButtonGroup scalegroup = new ButtonGroup();
 			scalegroup.add(OneSixRadio);
 			scalegroup.add(TwoTimesRadio);
 			scalegroup.add(OneRadio);
 					
-			//adds label and radio buttons
+			//adds label and radio buttons (updated by avneet)
 			ScalePanel.add(OneSixRadio);
 			ScalePanel.add(TwoTimesRadio);
 			ScalePanel.add(OneRadio);
