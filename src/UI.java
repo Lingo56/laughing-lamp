@@ -130,7 +130,7 @@ public class UI extends JFrame {
 			NoiseMediumRadio = new JRadioButton("Medium");
 			NoiseHighRadio = new JRadioButton("High");
 			
-			NoiseHighRadio.setBackground(bgColor);
+			//NoiseHighRadio.setBackground(bgColor);  //Button was offsetting consistency in boxes around buttons    Saito April 1 2017
 			
 			NoiseLowRadio.addActionListener(new NoiseLowRadioListener());
 			NoiseMediumRadio.addActionListener(new NoiseMediumRadioListener());
