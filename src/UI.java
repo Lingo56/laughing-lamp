@@ -36,7 +36,15 @@ public class UI extends JFrame {
 		private String path = "Browse for your image...";
 		
 		private Color bgColor = Color.white; 
-				
+		
+		//Saito April 1 2017
+		//-----Stores commands for command line, different options
+		private static String Noisecmd;
+		private static String Scalecmd;
+		private static String Filecmd;
+		private static String CommandInput;
+		//-----Stores commands for command line
+		
 		
 		//GUI interface Constructor-----------------------------
 		//Build the Gui
@@ -213,6 +221,8 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've pressed the 'Upscale' Button");
+				CommandInput = Upscale.CommandLine(Noisecmd, Scalecmd, Filecmd); //call command to create command line argument    April 1 2017 Saito
+				//Send CommandInput to be executed
 			}
 		}
 		
@@ -236,6 +246,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the 'None' Button");
+				Noisecmd = Upscale.NoiseNone(); //call command to create command line argument for noise none   April 1 2017 Saito
 			}
 		}
 		private class NoiseLowRadioListener implements ActionListener
@@ -243,6 +254,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the 'Low' Button");
+				Noisecmd = Upscale.NoiseLow(); //call command to create command line argument for noise low   April 1 2017 Saito
 			}
 		}
 		private class NoiseMediumRadioListener implements ActionListener
@@ -250,6 +262,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the 'Medium' Button");
+				Noisecmd = Upscale.NoiseMedium(); //call command to create command line argument for noise medium   April 1 2017 Saito
 			}
 		}
 		private class NoiseHighRadioListener implements ActionListener
@@ -257,6 +270,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the 'High' Button");
+				Noisecmd = Upscale.NoiseHigh(); //call command to create command line argument for noise high   April 1 2017 Saito
 			}
 		}
 		
@@ -267,6 +281,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the 'None' Button");
+				Scalecmd = Upscale.ScaleNone(); //call command to create command line argument for scale none   April 1 2017 Saito
 			}
 		}
 		private class OneSixRadioListener implements ActionListener
@@ -274,6 +289,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the '2x' Button");
+				Scalecmd = Upscale.Scale2x(); //call command to create command line argument for scale 2x   April 1 2017 Saito
 			}
 		}
 		private class TwoTimesRadioListener implements ActionListener
@@ -281,6 +297,7 @@ public class UI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("\nYou've selected the '4x' Button");
+				Scalecmd = Upscale.Scale4x(); //call command to create command line argument for scale 4x   April 1 2017 Saito
 			}
 		}
 		
