@@ -6,13 +6,20 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by theli on 3/28/2017.
- */
+
+    Not complete yet, currently leads to a folder specifically on my hard drive to a specific image
+    You can test this by changing the path down there and compiling the project into a jar
+    The program works it just needs some more time to get the noise level, scale ratio, and image locations working
+
+
+ **/
+
 public class Upscale {
     Util utility = new Util();
+
     int noiseLevel = 1;
     int scaleRatio = 1;
-
+    String imageInputPath;
 
     // Runs a commandline within java to convert an image using the settings the user provided in the GUI
     public void convert()
@@ -21,6 +28,7 @@ public class Upscale {
 
         noiseLevel = utility.getDeNoise();
         scaleRatio = utility.getScale();
+        imageInputPath = utility.getImagePath();
 
         try {
             Process process = runtime.exec(
@@ -30,7 +38,7 @@ public class Upscale {
                     " --scale_ratio " + "1" +                // The amount the image will be scaled up
                     //" -i " + utility.getImagePath() +                       // Input location command
                     //" -o " + "\\output\\output_image.png" +                 // Output location command
-                            " -i " + "C:\\Users\\theli\\Pictures\\2.png" +                       // Input location command
+                            " -i " + imageInputPath +                       // Input location command
                             " -o " + "C:\\Users\\theli\\Pictures\\3.png" +                 // Output location command
                     " --processor " + "1"                                   // To stop Waifu2x from using Nvidia CUDA cores and crashing the app
             );

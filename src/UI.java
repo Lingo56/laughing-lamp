@@ -303,8 +303,9 @@ public class UI extends JFrame {
 			myBrowser.showOpenDialog(null);
 			myBrowser.getSelectedFile().getAbsolutePath();
 			path = myBrowser.getSelectedFile().getAbsolutePath();
-			theText.setText("" + path);
 			utility.setImagePath(path);
+			path = utility.getImagePath();
+			theText.setText("" + path);
 		}	
 		
 		
