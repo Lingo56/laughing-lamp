@@ -33,10 +33,12 @@ public class UI extends JFrame {
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
+
 		private String path = "Browse for an image...";
 
 		Upscale ImageUpscaler = new Upscale();
 		Util utility = new Util();
+
 		
 		private Color bgColor = Color.white;
 
@@ -123,7 +125,7 @@ public class UI extends JFrame {
 			NoiseMediumRadio = new JRadioButton("Medium");
 			NoiseHighRadio = new JRadioButton("High");
 			
-			NoiseHighRadio.setBackground(bgColor);
+			//NoiseHighRadio.setBackground(bgColor);
 			
 			NoiseLowRadio.addActionListener(new NoiseLowRadioListener());
 			NoiseMediumRadio.addActionListener(new NoiseMediumRadioListener());

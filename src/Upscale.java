@@ -4,8 +4,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Created by theli on 3/28/2017.
- */
+
+Temporary until the new Upscale.java is bug fixed and working
+ 
+**/
+
 public class Upscale {
 
     public Upscale(){
