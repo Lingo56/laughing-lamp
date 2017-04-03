@@ -33,11 +33,14 @@ public class UI extends JFrame {
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
-		private String path = "Browse for your image...";
+		private String path = "Browse for an image...";
+
+		Upscale ImageUpscaler = new Upscale();
+		Util utility = new Util();
 		
-		private Color bgColor = Color.white; 
-				
-		
+		private Color bgColor = Color.white;
+
+
 		//GUI interface Constructor-----------------------------
 		//Build the Gui
 	    public UI()
@@ -46,7 +49,6 @@ public class UI extends JFrame {
 	    	setTitle("Waifu2X"); //set title of window
 	    	setSize(WIDTH, HEIGHT); //set size of window
 	    	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	    	
 	    	
 	    	BuildTitlePanel();
 	    	BuildInstructionPanel();
@@ -65,9 +67,8 @@ public class UI extends JFrame {
 	    	
 	    	setBackground(bgColor);
 	    }
-	    
-	    
-	    
+
+
 	    public void BuildTitlePanel() // (updated by avneet)
 		{
 			TitleLabel = new JLabel("Welcome to Waifu2X!");
@@ -212,11 +213,11 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've pressed the 'Upscale' Button");
+				ImageUpscaler.convert();
 			}
 		}
 		
-		//UPLOAD BUTTON---------
+		//BROWSE BUTTON---------
 		private class BrowseButtonListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
@@ -231,56 +232,63 @@ public class UI extends JFrame {
 		
 		
 		//NOISE RADIO---------
+		// No De-Noise
 		private class NoiseNoneRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'None' Button");
+				utility.setDeNoise(1);
 			}
 		}
+		// Low De-Noise
 		private class NoiseLowRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'Low' Button");
+				utility.setDeNoise(1);
 			}
 		}
+		// Medium De-Noise
 		private class NoiseMediumRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'Medium' Button");
+				utility.setDeNoise(2);
 			}
 		}
+		// High De-Noise
 		private class NoiseHighRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'High' Button");
+				utility.setDeNoise(3);
 			}
 		}
 		
 		
 		//MULTIPLIER RADIO---------
+		// No Upscaling
 		private class OneRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'None' Button");
+				utility.setScale(1);
 			}
 		}
+		// 2X Upscaling
 		private class OneSixRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '2x' Button");
+				utility.setScale(2);
 			}
 		}
+		// 4X Upscaling
 		private class TwoTimesRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '4x' Button");
+				utility.setScale(4);
 			}
 		}
 		
@@ -293,7 +301,8 @@ public class UI extends JFrame {
 			myBrowser.showOpenDialog(null);
 			myBrowser.getSelectedFile().getAbsolutePath();
 			path = myBrowser.getSelectedFile().getAbsolutePath();
-			theText.setText("" + path);			
+			theText.setText("" + path);
+			utility.setImagePath(path);
 		}	
 		
 		
