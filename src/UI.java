@@ -33,22 +33,16 @@ public class UI extends JFrame {
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
-		private String path = "Browse for your image...";
+
+		private String path = "Browse for an image...";
+
+		Upscale ImageUpscaler = new Upscale();
+		Util utility = new Util();
+
 		
-		private Color bgColor = Color.white; 
-		
-		//Saito April 1 2017
-		//-----Stores commands for command line, different options
-		private static String Noisecmd = "";
-		private static String Scalecmd = "";
-		private static String FilecmdIN = " -i "; //April 2
-		private static String FilecmdOUT = " -o "; //April 2
-		private static String FileINName = ""; //TEMP Apri 2
-		private static String FileOUTName = ""; //TEMP April 2
-		private static String CommandInput = "th waifu2x.lua"; //testing waifu2x tool command
-		//-----Stores commands for command line
-		
-		
+		private Color bgColor = Color.white;
+
+
 		//GUI interface Constructor-----------------------------
 		//Build the Gui
 	    public UI()
@@ -57,7 +51,6 @@ public class UI extends JFrame {
 	    	setTitle("Waifu2X"); //set title of window
 	    	setSize(WIDTH, HEIGHT); //set size of window
 	    	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	    	
 	    	
 	    	BuildTitlePanel();
 	    	BuildInstructionPanel();
@@ -76,9 +69,8 @@ public class UI extends JFrame {
 	    	
 	    	setBackground(bgColor);
 	    }
-	    
-	    
-	    
+
+
 	    public void BuildTitlePanel() // (updated by avneet)
 		{
 			TitleLabel = new JLabel("Welcome to Waifu2X!");
@@ -223,14 +215,11 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've pressed the 'Upscale' Button");
-				CommandInput = Upscale.CommandLine(Noisecmd, Scalecmd, FilecmdIN, FileINName, FilecmdOUT, FileOUTName); //call command to create command line argument    April 1 2017 Saito
-				//Send CommandInput to be executed
-				//added file name for input and file output name   April 2
+				ImageUpscaler.convert();
 			}
 		}
 		
-		//UPLOAD BUTTON---------
+		//BROWSE BUTTON---------
 		private class BrowseButtonListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
@@ -245,63 +234,63 @@ public class UI extends JFrame {
 		
 		
 		//NOISE RADIO---------
+		// No De-Noise
 		private class NoiseNoneRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'None' Button");
-				Noisecmd = Upscale.SetNoiseNone(); //call command to create command line argument for noise none   April 1 2017 Saito
+				utility.setDeNoise(1);
 			}
 		}
+		// Low De-Noise
 		private class NoiseLowRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'Low' Button");
-				Noisecmd = Upscale.SetNoiseLow(); //call command to create command line argument for noise low   April 1 2017 Saito
+				utility.setDeNoise(1);
 			}
 		}
+		// Medium De-Noise
 		private class NoiseMediumRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'Medium' Button");
-				Noisecmd = Upscale.SetNoiseMedium(); //call command to create command line argument for noise medium   April 1 2017 Saito
+				utility.setDeNoise(2);
 			}
 		}
+		// High De-Noise
 		private class NoiseHighRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'High' Button");
-				Noisecmd = Upscale.SetNoiseHigh(); //call command to create command line argument for noise high   April 1 2017 Saito
+				utility.setDeNoise(3);
 			}
 		}
 		
 		
 		//MULTIPLIER RADIO---------
+		// No Upscaling
 		private class OneRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the 'None' Button");
-				Scalecmd = Upscale.SetScaleNone(); //call command to create command line argument for scale none   April 1 2017 Saito
+				utility.setScale(1);
 			}
 		}
+		// 2X Upscaling
 		private class OneSixRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '2x' Button");
-				Scalecmd = Upscale.SetScale2x(); //call command to create command line argument for scale 2x   April 1 2017 Saito
+				utility.setScale(2);
 			}
 		}
+		// 4X Upscaling
 		private class TwoTimesRadioListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				System.out.println("\nYou've selected the '4x' Button");
-				Scalecmd = Upscale.SetScale4x(); //call command to create command line argument for scale 4x   April 1 2017 Saito
+				utility.setScale(4);
 			}
 		}
 		
@@ -314,7 +303,8 @@ public class UI extends JFrame {
 			myBrowser.showOpenDialog(null);
 			myBrowser.getSelectedFile().getAbsolutePath();
 			path = myBrowser.getSelectedFile().getAbsolutePath();
-			theText.setText("" + path);			
+			theText.setText("" + path);
+			utility.setImagePath(path);
 		}	
 		
 		
