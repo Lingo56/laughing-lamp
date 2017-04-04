@@ -1,6 +1,9 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -43,17 +46,54 @@ public class Util {
 
 	// GETTERS
 
-	public int getScale(){
-		return this.scaleAmount;
-	}
+	public String getFlags() {
+		// -m noise -m scale -m noise_scale
+		// --noise_level #
+		// --scale_ratio #
 
-	public int getDeNoise(){
-		return this.denoiseAmount;
-	}
+		/*" -i " + imageInputPath +
+				" -o " + imageOutputPath +
+		*/
 
-	public String getImagePath(){
-		System.out.println(imagePath);
+		List<String> results = new ArrayList<>();
 
-		return this.imagePath;
+		boolean doNoise = false;
+		boolean doScale = false;
+
+		switch(denoiseAmount) {
+			case 1:
+			case 2:
+			case 3:
+				results.add("--noise_level" + denoiseAmount);
+				doNoise = true;
+				break;
+		}
+
+		if (scaleAmount > 1){
+			results.add("--scale_ratio" + scaleAmount);
+			doScale = true;
+		}
+
+		String scaleFlag = "-m ";
+		if (doNoise && doScale){
+			scaleFlag += "noise_scale";
+		} else if (doNoise){
+			scaleFlag += "noise";
+		} else if (doScale){
+			scaleFlag += "scale";
+		}
+		results.add(scaleFlag);
+
+		Pattern pattern = Pattern.compile("\\.(?=\\w+$)");
+
+		String imageInputPath = this.imagePath;
+		String[] splits = pattern.split(imageInputPath);
+
+		String imageOutputPath = splits[0] + "_out." + splits[1];
+
+		results.add("-i " + imageInputPath);
+		results.add("-o " + imageOutputPath);
+
+		return String.join(" ", results);
 	}
 }

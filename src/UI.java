@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -92,7 +93,7 @@ public class UI extends JFrame {
 			//create TitlePanel
 			InstructionPanel = new JPanel();
 			InstructionPanel.setBackground(bgColor);
-			
+
 			//add labels to the panel
 			InstructionPanel.add(InstructionLabel);
 		}
@@ -103,6 +104,7 @@ public class UI extends JFrame {
 			BrowsePanel.setBackground(bgColor);
 			theText = new JTextField(30);
 			theText.setBackground(bgColor);
+			theText.setEditable(false);
 			BrowseButton = new JButton("Browse");
 			theText.setText("" + path);
 			
@@ -215,7 +217,9 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				ImageUpscaler.convert();
+				try {
+					ImageUpscaler.convert();
+				} catch(IOException shit) {}
 			}
 		}
 		
@@ -239,7 +243,7 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				utility.setDeNoise(1);
+				utility.setDeNoise(0);
 			}
 		}
 		// Low De-Noise
@@ -290,7 +294,7 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				utility.setScale(4);
+				utility.setScale(3);
 			}
 		}
 		
@@ -303,13 +307,8 @@ public class UI extends JFrame {
 			myBrowser.showOpenDialog(null);
 			myBrowser.getSelectedFile().getAbsolutePath();
 			this.path = myBrowser.getSelectedFile().getAbsolutePath();
-
-			System.out.println(this.path + " wee ");
-
 			utility.setImagePath(this.path);
 			theText.setText("" + this.path);
-
-			System.out.println(this.path);
 		}	
 		
 		
