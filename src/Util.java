@@ -51,8 +51,9 @@ public class Util {
 		// --noise_level #
 		// --scale_ratio #
 
-		/*" -i " + imageInputPath +
-				" -o " + imageOutputPath +
+		/*
+		" -i " + imageInputPath +
+		" -o " + imageOutputPath +
 		*/
 
 		List<String> results = new ArrayList<>();
@@ -64,22 +65,25 @@ public class Util {
 			case 1:
 			case 2:
 			case 3:
-				results.add("--noise_level" + denoiseAmount);
+				results.add("--noise_level " + denoiseAmount);
 				doNoise = true;
 				break;
 		}
 
 		if (scaleAmount > 1){
-			results.add("--scale_ratio" + scaleAmount);
+			results.add("--scale_ratio " + scaleAmount);
 			doScale = true;
 		}
 
-		String scaleFlag = "-m ";
+		String scaleFlag = "";
 		if (doNoise && doScale){
+			scaleFlag = "-m ";
 			scaleFlag += "noise_scale";
 		} else if (doNoise){
+			scaleFlag = "-m ";
 			scaleFlag += "noise";
 		} else if (doScale){
+			scaleFlag = "-m ";
 			scaleFlag += "scale";
 		}
 		results.add(scaleFlag);

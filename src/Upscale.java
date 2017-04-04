@@ -18,11 +18,9 @@ public class Upscale {
 
     Util utility;
 
-
     public Upscale(Util util){
         utility = util;
     }
-
 
     // Runs a commandline within java to convert an image using the settings the user provided in the GUI
     public void convert() throws IOException
@@ -31,6 +29,7 @@ public class Upscale {
 
         String flags = utility.getFlags();
 
+        System.out.println(flags);
 
         Process waifu2x = runtime.exec(
                 "cmd /c start waifu2x-converter-cpp.exe " +              // Launches the Waifu2x Wrapper
