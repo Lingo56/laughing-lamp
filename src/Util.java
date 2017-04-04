@@ -36,8 +36,9 @@ public class Util {
 	}
 
 	// Set the path to the image
-	public void setImagePath(String path){
-		imagePath = path;
+	public void setImagePath(String path) {
+		this.imagePath = path;
+		System.out.println(imagePath);
 	}
 
 	// GETTERS
@@ -51,6 +52,8 @@ public class Util {
 	}
 
 	public String getImagePath(){
+		System.out.println(imagePath);
+
 		return this.imagePath;
 	}
 }

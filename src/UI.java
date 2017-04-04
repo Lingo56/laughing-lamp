@@ -35,10 +35,10 @@ public class UI extends JFrame {
 		private JFileChooser myBrowser;
 
 		private String path = "Browse for an image...";
+		private String outputPath;
 
-		Upscale ImageUpscaler = new Upscale();
 		Util utility = new Util();
-
+		Upscale ImageUpscaler = new Upscale(utility);
 		
 		private Color bgColor = Color.white;
 
@@ -74,7 +74,7 @@ public class UI extends JFrame {
 	    public void BuildTitlePanel() // (updated by avneet)
 		{
 			TitleLabel = new JLabel("Welcome to Waifu2X!");
-			
+
 			TitleLabel.setFont(displayFont);
 			
 			//create TitlePanel
@@ -302,10 +302,14 @@ public class UI extends JFrame {
 			myBrowser = new JFileChooser();
 			myBrowser.showOpenDialog(null);
 			myBrowser.getSelectedFile().getAbsolutePath();
-			path = myBrowser.getSelectedFile().getAbsolutePath();
-			utility.setImagePath(path);
-			path = utility.getImagePath();
-			theText.setText("" + path);
+			this.path = myBrowser.getSelectedFile().getAbsolutePath();
+
+			System.out.println(this.path + " wee ");
+
+			utility.setImagePath(this.path);
+			theText.setText("" + this.path);
+
+			System.out.println(this.path);
 		}	
 		
 		
