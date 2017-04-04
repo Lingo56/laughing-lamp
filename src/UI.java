@@ -30,7 +30,7 @@ public class UI extends JFrame {
 		private JButton ExitButton, UpscaleButton;
 		private JRadioButton NoiseNoneRadio, NoiseLowRadio, NoiseMediumRadio, NoiseHighRadio;
 		private JRadioButton OneRadio, OneSixRadio, TwoTimesRadio;
-		private JTextField theText; //TEMPORARY MIDDLE!!!!!!!!!!!! ACTUALLY MAYBE NOT FOR URL UPLOAD
+		private JTextField theText; 
 		private JButton BrowseButton;
 		private Font displayFont = new Font("Apple Casual",Font.BOLD, 18);
 		private JFileChooser myBrowser;
@@ -53,7 +53,7 @@ public class UI extends JFrame {
 	    	setSize(WIDTH, HEIGHT); //set size of window
 	    	setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 	    	
-	    	BuildTitlePanel();
+	    	BuildTitlePanel(); // creating each panel
 	    	BuildInstructionPanel();
 	    	BuildBrowsePanel();
 	    	BuildNoisePanel();
@@ -61,14 +61,14 @@ public class UI extends JFrame {
 	    	BuildButtons();
 	    	
 	    	setLayout(new GridLayout(6, 0)); //set gridlayout
-	    	add(TitlePanel);
+	    	add(TitlePanel); // adding panel to the window
 	    	add(InstructionPanel);
 	    	add(BrowsePanel);
 	    	add(NoisePanel);
 	    	add(ScalePanel);
 	    	add(ButtonPanel);
 	    	
-	    	setBackground(bgColor);
+	    	setBackground(bgColor); // background color
 	    }
 
 
@@ -202,7 +202,7 @@ public class UI extends JFrame {
 		
 		
 		//-------------------BUTTONS-------------------------
-		
+		//the following are the actions of each button
 		//CLOSE BUTTON----------
 		private class ExitButtonListener implements ActionListener
 		{
