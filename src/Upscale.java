@@ -2,17 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
-
-    Not complete yet, currently leads to a folder specifically on my hard drive to a specific image
-    You can test this by changing the path down there and compiling the project into a jar
-    The program works it just needs some more time to get the noise level, scale ratio, and image locations working
-
-
- **/
 
 public class Upscale {
 
@@ -32,8 +21,8 @@ public class Upscale {
         System.out.println(flags);
 
         Process waifu2x = runtime.exec(
-                "cmd /c start waifu2x-converter-cpp.exe " +              // Launches the Waifu2x Wrapper
-                flags +
+                "cmd /c start waifu2x-converter-cpp.exe " +               // Launches the Waifu2x Wrapper
+                flags +                                                             // The commands needed to convert images
                 " --processor " + "1"                                               // To stop Waifu2x from using Nvidia CUDA cores and crashing the app
         );
 

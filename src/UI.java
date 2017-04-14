@@ -16,9 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-/**
- * Created by theli on 3/28/2017. Updated by avneet on 03/30/2017.
- */
 public class UI extends JFrame {
 		//Frame width and height (updated by avneet)
 		private static final int WIDTH = 500; 
@@ -294,7 +291,7 @@ public class UI extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				utility.setScale(3);
+				utility.setScale(4);
 			}
 		}
 		

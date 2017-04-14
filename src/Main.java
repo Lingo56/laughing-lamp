@@ -1,8 +1,5 @@
 import javax.swing.*;
 
-// TODO: Get the file locations working somehow
-
-
 public class Main extends JFrame {
 
 
@@ -12,6 +9,6 @@ public class Main extends JFrame {
         GUIinterface.setVisible(true);
 
     }
-    
-    
+
+
 }
